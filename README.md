@@ -52,8 +52,9 @@ When a new valid transaction was found, it was appended to the list. In the end,
 
 ## Test
 
-The code passed the given test and I also tested it using much larger files (300 M). However, since the file size of github is limited, I only
-include another medium sized self-created test in the tests folder.
+The code passed the given test and I also tested it using much larger files (300 M). However, since the file size of github is limited, I only include another medium sized self-created test in the tests folder.
+
+If use the `run_tests.sh` in directory ./insight/testsuite, a tmp folder will be created and all script, input and output can be found there.
 
 To test the individual functions in `main_parse.py`, I also wrote a python unittest code in folder `src`.
 To run the test, use the following command in the root directory (find_political_donors_junyi):
