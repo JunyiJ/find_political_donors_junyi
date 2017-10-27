@@ -6,7 +6,7 @@
 
 # Prerequisites
 
-Python 2 or 3. No extra packages are needed. (In practice, if the input data is too large, it is better to use numpy to handle large input and lists)
+Python 2 or 3. No extra packages are needed.
 
 # How to use
 
@@ -52,7 +52,9 @@ When a new valid transaction was found, it was appended to the list. In the end,
 
 ## Test
 
-The code passed the given test and I also tested it using much larger files (300 M). However, since the file size of github is limited, I didn't include it here. In the tests folder, I also created several tests to test for corner cases and relative large file:
+The code passed the given test and I also tested it using much larger files (300 M). However, since the file size of github is limited, I didn't include it here. In the tests folder. (In practice, if the input data is too large, it is better to use numpy to handle large input and lists)
+
+I also created several tests to test for corner cases and relative large file:
 * `test_1`: original test created by insight
 * `test_2`: A medium sized test (2000 lines).
 * `test_emptyinput`: EMpty itcont.txt file. Two empty output files(medianvals_by_zip.txt and medianvals_by_date.txt) were generated after running.
