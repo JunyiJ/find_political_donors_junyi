@@ -80,6 +80,13 @@ def valid_date(date):
 	
 def main_zip(inputpath,zipoutfile):
 	zipout,zipDict = [],{}
+	if not isfile(inputpath):
+		# if file doesn't exit, create two output but do nothing
+		with open(zipoutfile,"w+"):
+			pass
+		with open(dateoutfile,"w+"):
+			pass
+		return
 	with open(inputpath,"r") as f:
 		for line in f:
 			input = line.split("|")
@@ -101,10 +108,21 @@ def main_zip(inputpath,zipoutfile):
 
 def main_date(inputpath,datefile):
 	dateDict=defaultdict(list)
+	if not isfile(inputpath):
+		# if file doesn't exit, create two output but do nothing
+		with open(zipoutfile,"w+"):
+			pass
+		with open(dateoutfile,"w+"):
+			pass
+		return
 	with open(inputpath,"r") as f:
 		for line in f:
 			input = line.strip().split("|")
-			CMTE_ID,ZIP_CODE,TA_DT,TA_AMT,OTHER_ID = input[0],input[10],input[13],input[14],input[15]
+			if len(input) < 15: #invalid line
+				continue
+			CMTE_ID,ZIP_CODE,TA_DT,TA_AMT,OTHER_ID = input[0],input[10],input[13],input[14],None
+			if len(input) >= 15:#  No data after TA_AMT
+				OTHER_ID = input[15]
 			if OTHER_ID or (not CMTE_ID) or (not TA_AMT):
 				continue
 			#print CMTE_ID,ZIP_CODE,TA_DT,TA_AMT,OTHER_ID
