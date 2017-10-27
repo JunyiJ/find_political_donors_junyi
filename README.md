@@ -52,7 +52,7 @@ When a new valid transaction was found, it was appended to the list. In the end,
 
 ## Test
 
-The code passed the given test and I also tested it using much larger files (300 M). However, since the file size of github is limited, I only include another medium sized self-created test in the tests folder.
+The code passed the given test and I also tested it using much larger files (300 M). However, since the file size of github is limited, I only include another medium sized self-created test in the tests folder (test_2). To test the corner case, I added a test without inputfile (invalid input path) and it is in test_nofile. To test the script's ability to handle larger files, I added a large test in test_4
 
 If use the `run_tests.sh` in directory ./insight/testsuite, a tmp folder will be created and all script, input and output can be found there.
 
