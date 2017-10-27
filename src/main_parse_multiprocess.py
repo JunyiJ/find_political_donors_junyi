@@ -3,7 +3,7 @@ import time
 from collections import defaultdict
 import sys
 from multiprocessing import Process
-from os.path import abspath,dirname,join,isdir
+from os.path import abspath,dirname,join,isdir,isfile
 from os import listdir
 
 
@@ -90,7 +90,12 @@ def main_zip(inputpath,zipoutfile):
 	with open(inputpath,"r") as f:
 		for line in f:
 			input = line.split("|")
-			CMTE_ID,ZIP_CODE,TA_DT,TA_AMT,OTHER_ID = input[0],input[10],input[13],input[14],input[15]
+			ninput = len(input)
+			if ninput<15: # invalid line
+				continue
+			CMTE_ID,ZIP_CODE,TA_DT,TA_AMT,OTHER_ID = input[0],input[10],input[13],input[14],None
+			if ninput>=15: 
+				OTHER_ID = input[15]
 			if OTHER_ID or (not CMTE_ID) or (not TA_AMT):
 				continue
 			#print CMTE_ID,ZIP_CODE,TA_DT,TA_AMT,OTHER_ID
@@ -118,7 +123,14 @@ def main_date(inputpath,datefile):
 	with open(inputpath,"r") as f:
 		for line in f:
 			input = line.strip().split("|")
-			CMTE_ID,ZIP_CODE,TA_DT,TA_AMT,OTHER_ID = input[0],input[10],input[13],input[14],input[15]
+			ninput = len(input)
+			if ninput<15: # invalid line
+				continue
+			CMTE_ID,ZIP_CODE,TA_DT,TA_AMT,OTHER_ID = input[0],input[10],input[13],input[14],None
+			if ninput>=15: 
+				OTHER_ID = input[15]
+			if OTHER_ID or (not CMTE_ID) or (not TA_AMT):
+				continue
 			if OTHER_ID or (not CMTE_ID) or (not TA_AMT):
 				continue
 			#print CMTE_ID,ZIP_CODE,TA_DT,TA_AMT,OTHER_ID
