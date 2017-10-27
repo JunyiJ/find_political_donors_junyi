@@ -2,7 +2,7 @@ import heapq
 import time
 from collections import defaultdict
 import sys
-from os.path import abspath,dirname,join
+from os.path import abspath,dirname,join,isfile
 from os import listdir
 from multiprocessing import Process
 
@@ -80,6 +80,13 @@ def valid_date(date):
 	
 def main(inputpath,zipoutfile,dateoutfile):
 	zipout,dateout,zipDict,dateDict=[],[],{},defaultdict(list)
+	if not isfile(inputpath):
+		# if file doesn't exit, create two output but do nothing
+		with open(zipoutfile,"w+"):
+			pass
+		with open(dateoutfile,"w+"):
+			pass
+		return
 	with open(inputpath,"r") as f:
 		for line in f:
 			input = line.strip().split("|")
