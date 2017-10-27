@@ -8,7 +8,8 @@ The code passed the given test and I also tested it using much larger files (300
 * `test_invalidinput`: The itcont.txt doesn't follow the FEC rule. Test how the scripts handle with invalid lines.
 * `test_largefile`: A large test to test how the script handle large files.
 * `test_noinput`: No inputfile in input folder.Two empty output files(medianvals_by_zip.txt and medianvals_by_date.txt) were generated after running.
-
+* `test_invaliddate`: There is invalid date(for example, 01322017) in Transaction_DT field. medianvals_by_zip.txt still include this line but medianvals_by_date.txt doesn't include this line.
+* `test_invalid_TAamount`: The Transaction amount is not valide (for example, 384a or 38a4). Discard this line.
 
 If use the `run_tests.sh` in directory ./insight/testsuite, a tmp folder will be created and all script, input and output can be found there.
 
